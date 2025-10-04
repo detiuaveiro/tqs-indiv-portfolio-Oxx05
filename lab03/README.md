@@ -35,6 +35,18 @@ NOTAS:
 - Boundary - Indica os endpoints da app e redireciona as suas chamadas para o respetivo metodo do servico
 -- PathVariable é um 'arg' no url enquanto que request body é um json no curl
 -- 
+
+
+3.1
+- Entreprise app é uma app de larga escala, feita para muitos users.
+
+- Frameworks conhecidas e mais usadas: Jakarta, Quarkus, SpringBoot, Micronaut, Helidon
+
+-Spring boot usa os servlets do jakarta para correr alguns servicos como o tomcat. em relacao ao spring framework, o boot so o torna mais facil de usar
+
+-Embedded Tomcat (or Jetty/Undertow), DataSource (HikariCP by default), JPA Repositories, Spring MVC (DispatcherServlet, RequestMappingHandlerMapping), Thymeleaf TemplateEngine and ViewResolver, Actuator endpoints (/health, /info, /metrics), Logging (Logback with console output), Cache (CacheManager for EhCache, Caffeine, Redis), Spring Security default login (auto-generated user/password), Jackson ObjectMapper for JSON serialization
+
+-
     
     
 3.2 

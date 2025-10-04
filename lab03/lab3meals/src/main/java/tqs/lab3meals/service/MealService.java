@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tqs.lab3meals.data.MealsBookingRequest;
 import tqs.lab3meals.data.MealRepository;
-
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +21,10 @@ public class MealService {
 
     public Optional<MealsBookingRequest> getMealsBookingRequest (String mealId){
         return mealRepository.findByToken(mealId);
+    }
+
+    public List<MealsBookingRequest> getMealsBookingRequests(){
+        return mealRepository.findAll();
     }
 
     public boolean existsMeal(String mealId){

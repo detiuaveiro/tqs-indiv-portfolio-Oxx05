@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tqs.lab3meals.data.MealsBookingRequest;
 import tqs.lab3meals.service.MealService;
+import java.util.List;
 
 /**
  * REST API endpoints for managing users
@@ -48,6 +49,14 @@ public class MealRestController {
         MealsBookingRequest user = service.getMealsBookingRequest(token)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for id: " + token));
         return ResponseEntity.ok().body(user);
+    }
+
+
+    @GetMapping("/meals")
+    public ResponseEntity<List<MealsBookingRequest>> getBookings(){
+        List<MealsBookingRequest> meals = service.getMealsBookingRequests();
+
+        return ResponseEntity.ok().body(meals);
     }
 
 
