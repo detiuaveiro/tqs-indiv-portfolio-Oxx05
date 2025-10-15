@@ -1,0 +1,166 @@
+{
+  "id": "b953c174-d870-4098-84f1-05a3ec10bc19",
+  "version": "2.0",
+  "name": "OnlineBookStore",
+  "url": "https://cover-bookstore.onrender.com",
+  "tests": [{
+    "id": "d1645534-490c-4ed5-9e11-83c466daee1d",
+    "name": "FindBookTest",
+    "commands": [{
+      "id": "34e58a30-bf3a-4329-b8a0-bf2e398ddf0c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "939426e2-2713-4b26-ae39-5b87e8a8498c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "747x833",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2bd933e2-6804-4c03-ba1d-189e74d6e00e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI",
+      "targets": [
+        ["css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "05b3e2f6-1a12-4a1b-a52e-121cd67d0fb6",
+      "comment": "",
+      "command": "type",
+      "target": "css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI",
+      "targets": [
+        ["css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI", "css:finder"],
+        ["xpath=//input[@value='Harry Potter']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Harry Potter"
+    }, {
+      "id": "67f9b1f3-1653-42a6-8f6d-8df8146ada13",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI",
+      "targets": [
+        ["css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI", "css:finder"],
+        ["xpath=//input[@value='Harry Potter']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "91b47752-1ba1-4940-a0c3-b4d60941e034",
+      "comment": "",
+      "command": "click",
+      "target": "css=.SearchList_bookTitle__1wo4a",
+      "targets": [
+        ["css=.SearchList_bookTitle__1wo4a", "css:finder"],
+        ["xpath=//div[@id='root']/div[2]/div/div[2]/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/span", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a6429f55-af41-4886-91da-43bce1ae6424",
+    "name": "FindBookTest (1)",
+    "commands": [{
+      "id": "13dc2064-ed8a-4d09-96bb-e9adc6a3ea19",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41f879d7-e726-4076-9c8a-1415aec4d9f4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "747x833",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f9231c94-1eb8-4d3a-be31-856b910a948b",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "a493c0a3-ea78-48b8-b51a-59756286b460",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI",
+      "targets": [
+        ["css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a8b4f2f-e545-4c5e-acdf-94dedea12b81",
+      "comment": "",
+      "command": "type",
+      "target": "css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI",
+      "targets": [
+        ["css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI", "css:finder"],
+        ["xpath=//input[@value='Harry Potter']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Harry Potter"
+    }, {
+      "id": "57bc5c2b-d4c7-427e-a25c-1a647f82ea5e",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI",
+      "targets": [
+        ["css=.Navbar_searchBarContainer__3UbnF .Navbar_searchBarInput__w8FwI", "css:finder"],
+        ["xpath=//input[@value='Harry Potter']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "3d29750e-54b8-49c6-a7b2-0bc9bb045ccc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.SearchList_bookTitle__1wo4a",
+      "targets": [
+        ["css=.SearchList_bookTitle__1wo4a", "css:finder"],
+        ["xpath=//div[@id='root']/div[2]/div/div[2]/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5395a842-de3f-4000-8f1b-a70c143fba31",
+      "comment": "",
+      "command": "click",
+      "target": "css=.rippleBtn",
+      "targets": [
+        ["css=.rippleBtn", "css:finder"],
+        ["xpath=//div[@id='root']/div[2]/div/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Now')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "185ce741-8f6a-470f-8fbd-b1a75fe0acd6",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d1645534-490c-4ed5-9e11-83c466daee1d"]
+  }],
+  "urls": ["https://cover-bookstore.onrender.com/"],
+  "plugins": []
+}
