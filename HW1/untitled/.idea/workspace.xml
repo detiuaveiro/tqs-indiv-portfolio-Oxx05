@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50ecf270-351d-4502-b415-0de17622cf1e" name="Changes" comment="" />
+    <list default="true" id="32a2bd84-9c90-456d-b40c-571841e8d808" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ZeroMonos/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ZeroMonos/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab05/ex3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab05/ex3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab06/ex2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab06/ex2/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,30 +18,39 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
-}</component>
-  <component name="ProjectId" id="34Oll7jZO4ltIbNOsnQ0hRcKYsZ" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="34bPFaTEkQCnn9sHVjV5tSkJGes" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.CucumberTest.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/bernardo-martins/Desktop/TQS/HW1",
+    "last_opened_file_path": "/home/bernardo-martins/Desktop/TQS/HW1/ZeroMonos",
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -46,11 +60,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="50ecf270-351d-4502-b415-0de17622cf1e" name="Changes" comment="" />
-      <created>1761092648575</created>
+      <changelist id="32a2bd84-9c90-456d-b40c-571841e8d808" name="Changes" comment="" />
+      <created>1761479197442</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1761092648575</updated>
+      <updated>1761479197442</updated>
     </task>
     <servers />
   </component>
