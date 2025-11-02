@@ -1,0 +1,251 @@
+openapi: 3.0.3
+info:
+  title: ZeroMonos API
+  description: API para gestão de pedidos de recolha e municípios
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+tags:
+  - name: Civilian
+    description: Endpoints para civis
+  - name: Staff
+    description: Endpoints internos para funcionários
+
+paths:
+  /requests:
+    post:
+      summary: Cria um novo pedido de recolha
+      tags:
+        - Civilian
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZeroMonosBookingRequestInput'
+      responses:
+        '200':
+          description: Pedido criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '400':
+          description: Pedido inválido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Número máximo de pedidos atingido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Atualiza ou cancela um pedido
+      tags:
+        - Civilian
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZeroMonosBookingRequestInput'
+      responses:
+        '200':
+          description: Pedido atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZeroMonosBookingRequest'
+
+  /requests/{token}:
+    get:
+      summary: Consulta um pedido por token
+      tags:
+        - Civilian
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pedido encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZeroMonosBookingRequest'
+        '404':
+          description: Pedido não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Cancela um pedido
+      tags:
+        - Civilian
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pedido cancelado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZeroMonosBookingRequest'
+        '404':
+          description: Pedido não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /municipalities:
+    get:
+      summary: Lista todos os municípios
+      tags:
+        - Civilian
+      responses:
+        '200':
+          description: Lista de municípios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /municipalities/update:
+    post:
+      summary: Atualiza lista de municípios
+      tags:
+        - Civilian
+      responses:
+        '200':
+          description: Lista atualizada
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /staff/requests:
+    get:
+      summary: Lista todos os pedidos (filtrável)
+      tags:
+        - Staff
+      parameters:
+        - name: municipality
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de pedidos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZeroMonosBookingRequest'
+
+  /staff/requests/{token}:
+    put:
+      summary: Atualiza o estado de um pedido
+      tags:
+        - Staff
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pedido atualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZeroMonosBookingRequest'
+        '404':
+          description: Pedido não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ZeroMonosBookingRequestInput:
+      type: object
+      required:
+        - date
+        - municipality
+        - description
+      properties:
+        date:
+          type: string
+          format: date-time
+        municipality:
+          type: string
+        description:
+          type: string
+
+    ZeroMonosBookingRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        date:
+          type: string
+          format: date-time
+        municipality:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+          enum:
+            - CREATED
+            - RECEIVED
+            - ASSIGNED
+            - IN_PROGRESS
+            - FINISHED
+            - CANCELLED
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/StateChange'
+
+    StateChange:
+      type: object
+      properties:
+        state:
+          type: string
+          enum:
+            - CREATED
+            - RECEIVED
+            - ASSIGNED
+            - IN_PROGRESS
+            - FINISHED
+            - CANCELLED
+        changeDate:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string

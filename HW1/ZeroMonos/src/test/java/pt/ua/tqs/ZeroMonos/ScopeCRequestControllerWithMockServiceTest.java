@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import pt.ua.tqs.ZeroMonos.boundary.InvalidDateException;
+import pt.ua.tqs.ZeroMonos.boundary.InvalidMunicipalityException;
+import pt.ua.tqs.ZeroMonos.boundary.MaxCapacityException;
 import pt.ua.tqs.ZeroMonos.boundary.ZeroMonosRestController;
 import pt.ua.tqs.ZeroMonos.data.Municipality;
 import pt.ua.tqs.ZeroMonos.data.ZeroMonosBookingRequest;
@@ -47,6 +49,8 @@ public class ScopeCRequestControllerWithMockServiceTest {
                 .thenReturn(List.of("Aveiro", "Anadia", "Águeda"));
     }
 
+
+
     // ---- POST /api/requests ----
     @Test
     void whenValidRequest_thenCreateSuccessfully() throws Exception {
@@ -58,6 +62,34 @@ public class ScopeCRequestControllerWithMockServiceTest {
                         .content(JsonUtils.toJson(req)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.token", is(req.getToken())));
+
+        verify(service, times(1)).saveRequest(any());
+    }
+
+    @Test
+    void whenInvalidMunicipality_thenReturnBadRequest() throws Exception {
+        var req = new ZeroMonosBookingRequest(validDate, "Unknown", "desc");
+        when(service.saveRequest(any())).thenThrow(new InvalidMunicipalityException("Municipio inválido"));
+
+        mvc.perform(post("/api/requests")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtils.toJson(req)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("Municipio inválido")));
+
+        verify(service, times(1)).saveRequest(any());
+    }
+
+    @Test
+    void whenMaxCapacity_thenReturnTooManyRequests() throws Exception {
+        var req = new ZeroMonosBookingRequest(validDate, "Aveiro", "desc");
+        when(service.saveRequest(any())).thenThrow(new MaxCapacityException("Capacidade máxima atingida"));
+
+        mvc.perform(post("/api/requests")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtils.toJson(req)))
+                .andExpect(status().isTooManyRequests())
+                .andExpect(jsonPath("$.error", is("Capacidade máxima atingida")));
 
         verify(service, times(1)).saveRequest(any());
     }

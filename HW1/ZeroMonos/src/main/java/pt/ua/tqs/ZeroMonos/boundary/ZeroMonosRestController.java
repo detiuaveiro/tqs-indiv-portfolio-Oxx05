@@ -1,3 +1,4 @@
+// src/main/java/pt/ua/tqs/ZeroMonos/boundary/ZeroMonosRestController.java
 package pt.ua.tqs.ZeroMonos.boundary;
 
 import org.slf4j.Logger;
@@ -18,12 +19,14 @@ public class ZeroMonosRestController {
 
     private static final Logger logger = LoggerFactory.getLogger(ZeroMonosRestController.class);
 
+    private static final String ERROR_KEY = "error";
+
     private final ZeroMonosService service;
     private final MunicipalityService municipalityService;
 
     @ExceptionHandler({InvalidDateException.class, InvalidMunicipalityException.class, MaxCapacityException.class})
-    public ResponseEntity<?> handleBadRequestExceptions(RuntimeException ex) {
-        return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+    public ResponseEntity<Map<String, String>> handleBadRequestExceptions(RuntimeException ex) {
+        return ResponseEntity.badRequest().body(Map.of(ERROR_KEY, ex.getMessage()));
     }
 
     public ZeroMonosRestController(ZeroMonosService service, MunicipalityService municipalityService) {
@@ -32,30 +35,29 @@ public class ZeroMonosRestController {
     }
 
     @PostMapping("/requests")
-    public ResponseEntity<?> createRequest(@RequestBody ZeroMonosBookingRequest req){
+    public ResponseEntity<Map<String, String>> createRequest(@RequestBody ZeroMonosBookingRequest req) {
         try {
             logger.info("Creating request for municipality {} at {}", req.getMunicipality(), req.getDate());
             ZeroMonosBookingRequest booking = service.saveRequest(req);
             logger.info("Request created with token {}", booking.getToken());
-
             return ResponseEntity.ok(Map.of("token", booking.getToken()));
-
         } catch (InvalidDateException e) {
             logger.warn("Request creation failed due to invalid date: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+            return ResponseEntity.badRequest().body(Map.of(ERROR_KEY, e.getMessage()));
         } catch (InvalidMunicipalityException e) {
             logger.warn("Request creation failed due to invalid municipality: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+            return ResponseEntity.badRequest().body(Map.of(ERROR_KEY, e.getMessage()));
         } catch (MaxCapacityException e) {
             logger.warn("Request creation failed due to max capacity reached: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
-                    .body(Map.of("error", e.getMessage()));
+                    .body(Map.of(ERROR_KEY, e.getMessage()));
         } catch (Exception e) {
             logger.error("Unexpected error creating request", e);
             return ResponseEntity.internalServerError()
-                    .body(Map.of("error", "Erro inesperado ao criar pedido."));
+                    .body(Map.of(ERROR_KEY, "Erro inesperado ao criar pedido."));
         }
     }
+
 
     @GetMapping("/requests/{id}")
     public ResponseEntity<ZeroMonosBookingRequest> getBooking(@PathVariable(value = "id") String token)

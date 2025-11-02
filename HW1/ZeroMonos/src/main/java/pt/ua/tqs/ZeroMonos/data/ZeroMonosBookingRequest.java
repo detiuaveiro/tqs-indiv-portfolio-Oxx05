@@ -46,6 +46,8 @@ public class ZeroMonosBookingRequest {
 
     public ZeroMonosBookingRequest() {
         token = "res_" + java.util.UUID.randomUUID().toString();
+        StateChange st = new StateChange(this.state);
+        this.history.add(st);
     }
 
     public ZeroMonosBookingRequest(LocalDateTime dateTime, String municipality, String description) {
@@ -65,6 +67,7 @@ public class ZeroMonosBookingRequest {
         this.history.add(st);
     }
 
+
     public RESERVATION_STATE updateState() {
         switch (this.state) {
             case CREATED:
@@ -79,12 +82,15 @@ public class ZeroMonosBookingRequest {
             case IN_PROGRESS:
                 this.state = RESERVATION_STATE.FINISHED;
                 break;
+            default:
+                return this.state;
         }
 
         StateChange st = new StateChange(this.state);
         this.history.add(st);
         return this.state;
     }
+
 
     @Override
     public String toString() {
