@@ -4,45 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="684e3268-bec8-4ac9-9594-bbe18661a00f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/InvalidDateException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/InvalidMunicipalityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/MaxCapacityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/Municipality.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/service/MunicipalityService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/staff.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/CucumberTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/JsonUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/RestControllerPerformanceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeAZeroMonosRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeBZeroMonosServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeCRequestControllerWithMockServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeEZeroMonosRestControllerIT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ServicePerformanceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/TestContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/TestUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ZeroMonosSteps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/pt/ua/tqs/ZeroMonos/ZeroMonos.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.ask.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.edit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/ZeroMonosRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/ZeroMonosRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/StateChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/StateChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosBookingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosBookingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/service/ZeroMonosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/service/ZeroMonosService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/ZeroMonos.feature" beforeDir="false" />
-    </list>
+    <list default="true" id="684e3268-bec8-4ac9-9594-bbe18661a00f" name="Changes" comment="ZeroMonos" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,6 +114,19 @@
       <option name="presentableId" value="Default" />
       <updated>1761479491520</updated>
     </task>
+    <task id="LOCAL-00001" summary="ZeroMonos">
+      <option name="closed" value="true" />
+      <created>1762041667498</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762041667498</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ZeroMonos" />
+    <option name="LAST_COMMIT_MESSAGE" value="ZeroMonos" />
   </component>
 </project>
