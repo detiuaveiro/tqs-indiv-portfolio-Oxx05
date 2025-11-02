@@ -23,8 +23,9 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@TestPropertySource(locations = "/application-integrationtest.properties")
+
+@SpringBootTest(classes = ZeroMonosApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+@TestPropertySource(locations = "/application.properties")
 public class ScopeEZeroMonosRestControllerIT {
 
     @LocalServerPort

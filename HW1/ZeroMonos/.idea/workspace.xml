@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="684e3268-bec8-4ac9-9594-bbe18661a00f" name="Changes" comment="ZeroMonos" />
+    <list default="true" id="684e3268-bec8-4ac9-9594-bbe18661a00f" name="Changes" comment="SonarQube">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ZeroMonosSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ZeroMonosSteps.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,11 +126,20 @@
       <option name="project" value="LOCAL" />
       <updated>1762041667498</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="SonarQube">
+      <option name="closed" value="true" />
+      <created>1762041827163</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762041827163</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ZeroMonos" />
-    <option name="LAST_COMMIT_MESSAGE" value="ZeroMonos" />
+    <MESSAGE value="SonarQube" />
+    <option name="LAST_COMMIT_MESSAGE" value="SonarQube" />
   </component>
 </project>
