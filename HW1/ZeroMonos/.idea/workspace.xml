@@ -5,25 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684e3268-bec8-4ac9-9594-bbe18661a00f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/RESERVATION_STATE.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/ZeroMonosRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/StateChange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosBookingRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/service/ZeroMonosService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/ZeroMonos.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/lab3meals/src/test/java/tqs/lab3meals/boundary/MealRestControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/lab3meals/src/test/java/tqs/lab3meals/boundary/MealsBookingServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab07/lab3meals/src/test/java/tqs/lab3meals/service/MealServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab05/ex3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab05/ex3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab06/ex2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab06/ex2/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/InvalidDateException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/InvalidMunicipalityException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/MaxCapacityException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/Municipality.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/service/MunicipalityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/staff.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/CucumberTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/JsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/RestControllerPerformanceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeAZeroMonosRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeBZeroMonosServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeCRequestControllerWithMockServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ScopeEZeroMonosRestControllerIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ServicePerformanceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/TestContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/TestUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/ZeroMonosSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/pt/ua/tqs/ZeroMonos/ZeroMonos.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.ask.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/copilot.data.migration.edit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab07/ua_tqs_gs20-master-gs-buser/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/ZeroMonosRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/boundary/ZeroMonosRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/StateChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/StateChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosBookingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosBookingRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/data/ZeroMonosRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/service/ZeroMonosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos/service/ZeroMonosService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/ZeroMonos.feature" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,25 +76,66 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/bernardo-martins/Desktop/TQS/lab07/ua_tqs_gs20-master-gs-buser",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ZeroMonosApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScopeCRequestControllerWithMockServiceTest.whenStaffRequestsByMunicipality_thenReturnFiltered.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bernardo-martins/Desktop/TQS/HW1/ZeroMonos/src/test/java/pt/ua/tqs/ZeroMonos&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos" />
       <recent name="$PROJECT_DIR$/src/main/java/pt/ua/tqs/ZeroMonos" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/pt/ua/tqs/ZeroMonos" />
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/test/resources/pt/ua/tqs" />
+      <recent name="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos/Cucumber" />
+      <recent name="$PROJECT_DIR$/src/test/java/pt/ua/tqs/ZeroMonos" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="pt.ua.tqs.ZeroMonos" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pt.ua.tqs.ZeroMonos" />
+      <recent name="pt.ua.tqs.ZeroMonos.boundary" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ScopeCRequestControllerWithMockServiceTest.whenStaffRequestsByMunicipality_thenReturnFiltered" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ZeroMonos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pt.ua.tqs.ZeroMonos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pt.ua.tqs.ZeroMonos" />
+      <option name="MAIN_CLASS_NAME" value="pt.ua.tqs.ZeroMonos.ScopeCRequestControllerWithMockServiceTest" />
+      <option name="METHOD_NAME" value="whenStaffRequestsByMunicipality_thenReturnFiltered" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ScopeCRequestControllerWithMockServiceTest.whenStaffRequestsByMunicipality_thenReturnFiltered" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

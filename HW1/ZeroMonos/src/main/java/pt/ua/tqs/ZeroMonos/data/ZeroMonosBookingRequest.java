@@ -12,29 +12,29 @@ import java.util.List;
 @Entity
 @Table(name = "requests")
 public class ZeroMonosBookingRequest {
-    private static int idCounter = 0;
 
     @Id
     private final String token;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     @jakarta.validation.constraints.NotNull(message = "State is mandatory")
     private RESERVATION_STATE state = RESERVATION_STATE.CREATED;
 
     @Column(nullable = false)
     @jakarta.validation.constraints.NotNull(message = "Date is mandatory")
-    public LocalDateTime date;
+    private LocalDateTime date;
 
     @Column(nullable = false)
     @Size(min = 1, max = 50)
     @NotBlank(message = "Municipality is mandatory")
-    public String municipality;
+    private String municipality;
 
 
     @Column(nullable = false)
-    @Size(min = 1, max = 200)
+    @Size(min = 1, max = 500)
     @NotBlank(message = "Description is mandatory")
-    public String description;
+    private String description;
 
 
     @ElementCollection
@@ -42,23 +42,27 @@ public class ZeroMonosBookingRequest {
             name = "request_history",
             joinColumns = @JoinColumn(name = "request_token")
     )
-    private List<StateChange> history = new ArrayList<>();
+    private final List<StateChange> history = new ArrayList<>();
 
     public ZeroMonosBookingRequest() {
-        idCounter++;
-        token = "res_" + idCounter;
+        token = "res_" + java.util.UUID.randomUUID().toString();
     }
 
     public ZeroMonosBookingRequest(LocalDateTime dateTime, String municipality, String description) {
+        this();
         this.date = dateTime;
         this.municipality = municipality;
         this.description = description;
-        idCounter++;
-        token = "res_" + idCounter;
     }
 
     public void cancelBooking() {
+        if (this.state == RESERVATION_STATE.FINISHED || this.state == RESERVATION_STATE.CANCELLED) {
+            return;
+        }
+
         this.state = RESERVATION_STATE.CANCELLED;
+        StateChange st = new StateChange(this.state);
+        this.history.add(st);
     }
 
     public RESERVATION_STATE updateState() {
@@ -77,20 +81,21 @@ public class ZeroMonosBookingRequest {
                 break;
         }
 
+        StateChange st = new StateChange(this.state);
+        this.history.add(st);
         return this.state;
     }
 
     @Override
     public String toString() {
-        return "MealsBookingRequest{" +
-                "date=" + date +
-                ", userId='" + userId + '\'' +
-                ", token='" + token + '\'' +
+        return "ZonoMonosRequst{" +
+                "token='" + token + '\'' +
+                ", date=" + date +
                 ", state=" + state +
+                ", municipality='" + municipality + '\'' +
+                ", description=" + description +
                 '}';
     }
-
-    //setters and getters e hashcode and equals
 
     public void setState(RESERVATION_STATE state) {
         this.state = state;
@@ -113,14 +118,27 @@ public class ZeroMonosBookingRequest {
         return date;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getMunicipality() {
+        return municipality;
+    }
+    public String getDescription() {
+        return description;
     }
     public String getToken() {
         return token;
     }
     public RESERVATION_STATE getState() {
         return state;
+    }
+    public List<StateChange> getHistory() {return  history;}
+
+    public LocalDateTime getChangeTime(RESERVATION_STATE state) {
+        for (StateChange sc : history) {
+            if (sc.getState() == state) {
+                return sc.getChangeDate();
+            }
+        }
+        return null;
     }
 
 

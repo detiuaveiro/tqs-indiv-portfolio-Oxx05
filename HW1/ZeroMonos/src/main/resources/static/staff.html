@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>ZeroMonos - Staff</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        button {
+            margin: 0.2rem;
+        }
+        #detailsBox {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #fafafa;
+            display: none;
+        }
+        #detailsBox h3 {
+            margin-top: 0;
+        }
+        #detailsContent {
+            white-space: pre-wrap;
+        }
+        #filterBar {
+            margin-bottom: 1.5rem;
+        }
+        #municipalityInput {
+            width: 250px;
+            padding: 0.4rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Pedidos - Staff</h1>
+
+<div id="filterBar">
+    <label for="municipalityInput">Município:</label>
+    <input type="text" id="municipalityInput" list="municipalitiesList" placeholder="(mostrar todos)">
+    <datalist id="municipalitiesList"></datalist>
+    <button onclick="applyFilter()">Filtrar</button>
+    <button onclick="resetFilter()">Mostrar todos</button>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Token</th>
+        <th>Data</th>
+        <th>Município</th>
+        <th>Descrição</th>
+        <th>Estado</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody id="requestsTable"></tbody>
+</table>
+
+<div id="detailsBox">
+    <h3>Detalhes do Pedido</h3>
+    <div id="detailsContent"></div>
+    <button onclick="closeDetails()">Fechar</button>
+</div>
+
+<script>
+    async function loadMunicipalities() {
+        const res = await fetch('/api/municipalities');
+        const list = await res.json();
+        const datalist = document.getElementById('municipalitiesList');
+        datalist.innerHTML = list.map(m => `<option value="${m}"></option>`).join('');
+    }
+
+    async function loadRequests(municipality = null) {
+        const url = municipality
+            ? `/api/staff/requests/${encodeURIComponent(municipality)}`
+            : '/api/staff/requests';
+
+        const res = await fetch(url);
+        const requests = await res.json();
+        const tbody = document.getElementById('requestsTable');
+        tbody.innerHTML = '';
+
+        if (requests.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:gray;">Nenhum pedido encontrado.</td></tr>`;
+            return;
+        }
+
+        requests.forEach(r => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${r.token}</td>
+                <td>${new Date(r.date).toLocaleString()}</td>
+                <td>${r.municipality}</td>
+                <td>${r.description}</td>
+                <td>${r.state}</td>
+                <td>
+                    <button onclick="updateState('${r.token}')">Avançar Estado</button>
+                    <button onclick="showDetails('${r.token}')">Mais detalhes</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    async function applyFilter() {
+        const municipality = document.getElementById('municipalityInput').value.trim();
+        if (municipality === '') {
+            loadRequests();
+        } else {
+            loadRequests(municipality);
+        }
+    }
+
+    function resetFilter() {
+        document.getElementById('municipalityInput').value = '';
+        loadRequests();
+    }
+
+    async function updateState(token) {
+        await fetch(`/api/staff/requests/${token}`, { method: 'PUT' });
+        applyFilter(); // recarrega com o filtro atual
+    }
+
+    async function showDetails(token) {
+        const res = await fetch(`/api/requests/${token}`);
+        if (!res.ok) {
+            alert("Erro ao obter detalhes do pedido.");
+            return;
+        }
+
+        const data = await res.json();
+        let content = `📄 Token: ${data.token}\n`;
+        content += `Município: ${data.municipality}\n`;
+        content += `Descrição: ${data.description}\n`;
+        content += `Data: ${new Date(data.date).toLocaleString()}\n`;
+        content += `Estado atual: ${data.state}\n\n📜 Histórico:\n`;
+
+        if (data.history && data.history.length > 0) {
+            for (const h of data.history) {
+                content += `→ ${h.state} em ${new Date(h.changeDate).toLocaleString()}\n`;
+            }
+        } else {
+            content += "Sem histórico registado.";
+        }
+
+        const box = document.getElementById('detailsBox');
+        document.getElementById('detailsContent').innerText = content;
+        box.style.display = 'block';
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function closeDetails() {
+        document.getElementById('detailsBox').style.display = 'none';
+    }
+
+    // inicialização
+    loadMunicipalities();
+    loadRequests();
+</script>
+</body>
+</html>
