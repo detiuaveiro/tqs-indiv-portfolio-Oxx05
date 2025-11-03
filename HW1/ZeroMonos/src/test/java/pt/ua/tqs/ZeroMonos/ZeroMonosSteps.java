@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,7 +30,16 @@ public class ZeroMonosSteps {
 
     @Before
     public void setup() {
-        driver = WebDriverManager.chromedriver().create();
+        // Cria ChromeDriver em modo headless para CI
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // sem interface gráfica
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+
+        driver = WebDriverManager.chromedriver()
+                .capabilities(options)
+                .create();
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
@@ -42,43 +52,31 @@ public class ZeroMonosSteps {
 
     // --------- Citizen Steps ---------
     @Given("the web application is running")
-    public void webAppRunning() {
-        // já validado no BeforeAll
-    }
+    public void webAppRunning() { }
 
     @Given("I open the citizen booking page")
     public void openCitizenPage() {
         driver.get("http://localhost:8080/index.html");
-        // Wait for page to load completely
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("bookingForm")));
     }
 
     @When("I fill in a valid date, municipality {string} and description {string}")
     public void fillBookingForm(String municipality, String description) {
-        // Get next valid weekday
         LocalDateTime date = TestUtils.nextValidWeekday();
-
-        // Format: "2025-11-03T14:30"
         String isoDateTime = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
 
         WebElement dateField = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("date")));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        // Set datetime-local value
         js.executeScript("""
-        arguments[0].value = arguments[1];
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+            arguments[0].value = arguments[1];
+            arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+            arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
         """, dateField, isoDateTime);
 
-        System.out.println("Set datetime-local value: " + dateField.getAttribute("value"));
-
-        // Fill municipality
         WebElement municipalityInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("municipalityInput")));
         municipalityInput.clear();
         municipalityInput.sendKeys(municipality);
 
-        // Fill description
         WebElement descriptionInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("description")));
         descriptionInput.clear();
         descriptionInput.sendKeys(description);
@@ -86,12 +84,8 @@ public class ZeroMonosSteps {
 
     @And("I submit the booking form")
     public void submitBookingForm() {
-        WebElement submitButton = wait.until(
-                ExpectedConditions.elementToBeClickable(By.cssSelector("#bookingForm button[type='submit']"))
-        );
+        WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#bookingForm button[type='submit']")));
         submitButton.click();
-
-        // Wait for the response message to appear
         wait.until(ExpectedConditions.and(
                 ExpectedConditions.presenceOfElementLocated(By.id("createMessage")),
                 ExpectedConditions.not(ExpectedConditions.textToBe(By.id("createMessage"), ""))
@@ -101,23 +95,15 @@ public class ZeroMonosSteps {
     @Then("I should see a success message containing the token")
     public void checkSuccessMessage() {
         WebElement msgDiv = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("createMessage")));
-
-        // Wait for the message to be populated
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.id("createMessage"), "")));
 
         String msg = msgDiv.getText();
-        System.out.println("Success message: " + msg);
+        assertTrue(msg.contains("✅ Pedido criado! Token:") || msg.contains("Pedido criado! Token:"));
 
-        assertTrue(msg.contains("✅ Pedido criado! Token:") || msg.contains("Pedido criado! Token:"),
-                "Mensagem de sucesso não encontrada: " + msg);
-
-        // Extract token - format is "✅ Pedido criado! Token: ABC123"
         String[] parts = msg.split("Token:\\s*");
-        assertTrue(parts.length > 1, "Token não encontrado na mensagem: " + msg);
+        assertTrue(parts.length > 1);
         String token = parts[1].trim();
-
         TestContext.setLastToken(token);
-        System.out.println("Token extracted: " + token);
     }
 
     @And("the token list should include the new token")
