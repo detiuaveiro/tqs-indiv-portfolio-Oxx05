@@ -42,5 +42,16 @@ jobs:
         sudo apt-get install -y chromium-browser chromium-chromedriver
         export CHROME_BIN=/usr/bin/chromium-browser
         export CHROMEDRIVER_BIN=/usr/lib/chromium-browser/chromedriver
+        
+    - name: Build and start Spring Boot app
+      run: |
+        mvn clean package -DskipTests
+        nohup java -jar target/ZeroMonos-0.0.1-SNAPSHOT.jar &
+        sleep 10
+        
+    - name: Run tests
+      run: mvn test
+
+
 
 
