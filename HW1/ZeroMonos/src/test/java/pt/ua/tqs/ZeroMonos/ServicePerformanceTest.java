@@ -100,8 +100,7 @@ public class ServicePerformanceTest {
     }
 
     @Test
-    void performance_saveRequest_multipleMunicipalities_1000Requests()
-            throws InvalidDateException, InvalidMunicipalityException, MaxCapacityException {
+    void performance_saveRequest_multipleMunicipalities_1000Requests(){
 
         LocalDateTime baseDate = LocalDateTime.of(2030, 1, 2, 10, 0); // Sexta-feira, 10h
         String[] municipalities = {"Anadia", "Aveiro", "Águeda"};

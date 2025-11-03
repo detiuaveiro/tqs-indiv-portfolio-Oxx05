@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@TestPropertySource(locations = "classpath:application.properties")
+@TestPropertySource(locations = "classpath:application-integration.properties")
 public class ScopeEZeroMonosRestControllerIT {
 
     @LocalServerPort
