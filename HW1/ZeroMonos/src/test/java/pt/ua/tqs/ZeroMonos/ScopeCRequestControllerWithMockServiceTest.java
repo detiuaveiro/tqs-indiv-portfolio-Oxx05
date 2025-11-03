@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -16,7 +17,6 @@ import pt.ua.tqs.ZeroMonos.data.ZeroMonosBookingRequest;
 import pt.ua.tqs.ZeroMonos.service.MunicipalityService;
 import pt.ua.tqs.ZeroMonos.service.ZeroMonosService;
 
-import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(ZeroMonosRestController.class)
+@Import(ZeroMonosApplication.class)
 public class ScopeCRequestControllerWithMockServiceTest {
 
     @Autowired
