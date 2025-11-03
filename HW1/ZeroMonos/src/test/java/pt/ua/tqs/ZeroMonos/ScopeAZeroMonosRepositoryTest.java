@@ -3,9 +3,9 @@ package pt.ua.tqs.ZeroMonos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.context.annotation.Import;
 import pt.ua.tqs.ZeroMonos.data.ZeroMonosRepository;
 import pt.ua.tqs.ZeroMonos.data.ZeroMonosBookingRequest;
 
@@ -17,7 +17,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@Import(ZeroMonosApplication.class)
+@ImportAutoConfiguration(ZeroMonosApplication.class)
 public class ScopeAZeroMonosRepositoryTest {
 
     @Autowired
