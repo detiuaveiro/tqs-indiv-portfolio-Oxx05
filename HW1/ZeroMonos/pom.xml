@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>pt.ua.tqs</groupId>
     <artifactId>ZeroMonos</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -14,7 +13,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- VERSÃO QUE FUNCIONA COM @MockitoBean SEM CLASSIFIER -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -36,6 +34,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+
+        <!-- DB -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -47,7 +47,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- TEST (inclui @MockitoBean automaticamente) -->
+        <!-- TEST -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -103,6 +103,8 @@
             <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- OpenAPI -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -135,11 +137,13 @@
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>yourPluginVersion</version>
+                    <version>4.0.0.4121</version>
                 </plugin>
             </plugins>
         </pluginManagement>
+
         <plugins>
+            <!-- COMPILA MAIN ANTES DE TEST -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -147,15 +151,31 @@
                 <configuration>
                     <release>${java.version}</release>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>compile-main</id>
+                        <phase>compile</phase>
+                        <goals><goal>compile</goal></goals>
+                    </execution>
+                    <execution>
+                        <id>compile-test</id>
+                        <phase>test-compile</phase>
+                        <goals><goal>testCompile</goal></goals>
+                    </execution>
+                </executions>
             </plugin>
+
+            <!-- SUREFIRE: roda unit tests (exclui selenium) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.0</version>
                 <configuration>
                     <excludedGroups>selenium</excludedGroups>
                 </configuration>
-                <version>3.5.0</version>
             </plugin>
+
+            <!-- SPRING BOOT -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -163,22 +183,20 @@
                     <mainClass>pt.ua.tqs.ZeroMonos.ZeroMonosApplication</mainClass>
                 </configuration>
             </plugin>
+
+            <!-- JACOCO -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version>
                 <executions>
                     <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
+                        <goals><goal>prepare-agent</goal></goals>
                     </execution>
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
+                        <goals><goal>report</goal></goals>
                     </execution>
                 </executions>
             </plugin>
