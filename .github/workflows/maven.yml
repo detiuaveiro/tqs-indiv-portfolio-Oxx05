@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: HW1/ZeroMonos  
+        working-directory: HW1/ZeroMonos
 
     steps:
     - uses: actions/checkout@v4
@@ -24,11 +24,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    # Se tiveres testes Selenium e precisares de Chrome/Chromedriver:
-    - name: Install Chrome and ChromeDriver (optional for Selenium)
+    - name: Install Chrome and ChromeDriver
       run: |
         sudo apt-get update
-        sudo apt-get install -y chromium-browser chromium-chromedriver
+        sudo apt-get install -y google-chrome-stable
+        sudo apt-get install -y chromium-chromedriver
 
     - name: Run tests with Maven (including integration tests)
       run: mvn -B verify --file pom.xml
