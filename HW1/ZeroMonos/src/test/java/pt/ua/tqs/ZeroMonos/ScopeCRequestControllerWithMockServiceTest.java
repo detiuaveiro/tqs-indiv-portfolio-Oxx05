@@ -29,7 +29,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(ZeroMonosRestController.class)
-@ImportAutoConfiguration(ZeroMonosApplication.class)
 public class ScopeCRequestControllerWithMockServiceTest {
 
     @Autowired

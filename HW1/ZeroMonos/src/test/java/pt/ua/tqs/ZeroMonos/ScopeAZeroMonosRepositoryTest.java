@@ -17,7 +17,6 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@ImportAutoConfiguration(ZeroMonosApplication.class)
 public class ScopeAZeroMonosRepositoryTest {
 
     @Autowired
